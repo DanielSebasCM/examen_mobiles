@@ -1,6 +1,7 @@
 package com.example.examen.data.network
 
 import com.example.examen.utils.Constants
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -22,6 +23,12 @@ object NetworkModule {
      */
     operator fun <T> invoke(apiServiceClass: Class<T>): T {
         val okHttpClient = OkHttpClient.Builder()
+            .addInterceptor(Interceptor { chain ->
+                val request = chain.request().newBuilder()
+                    .addHeader("Authorization", "Bearer " + Constants.TOKEN)
+                    .build()
+                chain.proceed(request)
+            })
             .build()
 
         return Retrofit.Builder()
