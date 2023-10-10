@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.examen.databinding.ActivityMainBinding
+import com.example.examen.databinding.FragmentErrorBinding
 import com.example.examen.framework.adapters.MovieAdapter
 import com.example.examen.framework.viewmodels.MainViewModel
 
@@ -33,6 +34,9 @@ class MainActivity : AppCompatActivity() {
                 val adapter = MovieAdapter()
                 adapter.initCustomAdapter(list, this)
                 recicleView.adapter = adapter
+            } else {
+                binding.root.removeView(recicleView)
+                binding.LLContainer.addView(FragmentErrorBinding.inflate(layoutInflater).root)
             }
         }
     }

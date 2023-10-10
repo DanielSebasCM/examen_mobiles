@@ -52,7 +52,7 @@ class MovieAdapter : RecyclerView.Adapter<CatalogueViewHolder>() {
      */
     override fun onBindViewHolder(viewHolder: CatalogueViewHolder, position: Int) {
         val item = data[position]
-        viewHolder.bind(item)
+        viewHolder.bind(item, context)
     }
 
     /**
