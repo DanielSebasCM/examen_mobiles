@@ -11,21 +11,15 @@ import com.example.examen.databinding.ItemMovieBinding
 import com.example.examen.utils.Constants
 
 /**
- * Esta clase se utiliza para almacenar los datos de resumen
- * de la empresa y crear la vista de la tarjeta del
- * catálogo de la empresa
- * @property binding: Objeto CatalogueCardLayoutBinding
- * @constructor CatalogueViewHolder
+ * Esta clase se utiliza para almacenar los datos de
+ * una película y crear la vista de la
+ * tarjeta de la película
+ * @property binding: Objeto ItemMovieBinding
+ * @constructor MovieViewHolder
  */
 
-class CatalogueViewHolder(private val binding: ItemMovieBinding) :
+class MovieViewHolder(private val binding: ItemMovieBinding) :
     RecyclerView.ViewHolder(binding.root) {
-
-    /**
-     * Esta función se utiliza para vincular los datos de resumen de la empresa
-     * con la vista de la tarjeta del catálogo de la empresa
-     * @param companySummary: Objeto CompanySummary
-     */
 
     fun bind(movieDetails: MovieDetails, context: Context) {
         binding.TVTitle.text = movieDetails.title
