@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
         // Observers
         viewModel.popularListLiveData.observe(this) { list ->
             if (list != null) {
+
+                binding.root.removeView(binding.skeleton.root)
                 val adapter = MovieAdapter()
                 adapter.initCustomAdapter(list, this)
                 recicleView.adapter = adapter
