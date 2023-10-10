@@ -1,5 +1,9 @@
 package com.example.examen.data.network.models
 
+
+/**
+ * Dataclass representing the info given of a specific movie by the api
+ */
 data class MovieDetails(
     val adult: Boolean,
     val backdrop_path: String,
