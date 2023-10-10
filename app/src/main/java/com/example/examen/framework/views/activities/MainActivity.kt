@@ -1,6 +1,8 @@
 package com.example.examen.framework.views.activities
 
+import android.app.ActionBar.LayoutParams
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -30,15 +32,20 @@ class MainActivity : AppCompatActivity() {
 
         // Observers
         viewModel.popularListLiveData.observe(this) { list ->
-            if (list != null) {
-
+            if (!list.isNullOrEmpty()) {
                 binding.root.removeView(binding.skeleton.root)
                 val adapter = MovieAdapter()
                 adapter.initCustomAdapter(list, this)
                 recicleView.adapter = adapter
             } else {
+                Log.i("Salida", "No hay datos")
                 binding.root.removeView(recicleView)
-                binding.LLContainer.addView(FragmentErrorBinding.inflate(layoutInflater).root)
+                binding.root.removeView(binding.skeleton.root)
+                val errorView = FragmentErrorBinding.inflate(layoutInflater).root
+                binding.LLContainer.addView(errorView)
+                errorView.layoutParams.height = LayoutParams.MATCH_PARENT
+                errorView.layoutParams.width = LayoutParams.MATCH_PARENT
+
             }
         }
     }
